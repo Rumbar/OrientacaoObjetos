@@ -7,7 +7,8 @@ class Program
     static void Main(string[]args)
     {
         //ProblemaSemPoo();
-        Exercicio1();
+        //Exercicio1();
+        GerenciamentoEstoque();
     }
     static void ProblemaSemPoo()
     {
@@ -54,6 +55,37 @@ class Program
             Console.WriteLine("A pessoa mais velha é " + b.nome);
         else
             Console.WriteLine("A pessoa mais velha é " + a.nome);
+    }
+    static void GerenciamentoEstoque()
+    {
+        Produto produto = new Produto();
+
+        Console.WriteLine("Entre com os dados do produto");
+        Console.Write("Nome: ");
+        produto.Nome = Console.ReadLine();
+        Console.Write("Preço: ");
+        produto.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        Console.Write("Estoque: ");
+        produto.Quant = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Dados do Produto: " + produto);
+
+        Console.WriteLine();
+
+        Console.WriteLine("Digite o número de produtos a ser adicionados ao estoque: ");
+        int atualizacao = int.Parse(Console.ReadLine());
+        produto.AdicionarProdutos(atualizacao);
+        Console.WriteLine("Dados Atualizados: " + produto);
+
+        Console.WriteLine();
+
+        Console.WriteLine("Digite o número de produtos a ser removido do estoque");
+        int remocao = int.Parse(Console.ReadLine());
+        produto.RemoverProduto(remocao);
+
+        Console.WriteLine();
+
+        Console.WriteLine("Dados do Produto: " + produto);
     }
 }
  
