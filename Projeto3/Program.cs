@@ -8,7 +8,11 @@ class Program
     {
         //ProblemaSemPoo();
         //Exercicio1();
-        GerenciamentoEstoque();
+        //GerenciamentoEstoque();
+        //Exercicio2();
+        Raio();
+        
+        
     }
     static void ProblemaSemPoo()
     {
@@ -87,5 +91,40 @@ class Program
 
         Console.WriteLine("Dados do Produto: " + produto);
     }
+    static void Exercicio2()
+    {
+        Triangulo2 triangulo = new Triangulo2();
+
+        Console.WriteLine("Entre com a largura e altura do triangulo");
+        triangulo.largura = double.Parse(Console.ReadLine());
+        triangulo.altura = double.Parse(Console.ReadLine());
+
+        Console.WriteLine(triangulo);
+        
+    }
+    static double Pi = 3.14;
+
+    static void Raio()
+    {
+        Console.WriteLine("Entre com o valor do Raio");
+        double raio = double.Parse(Console.ReadLine());
+
+        double circ = Circunferencia(raio);
+        double vol = Volume(raio);
+
+        Console.WriteLine("Circuferencia: " + circ);
+        Console.WriteLine("Volume: " + vol);
+        Console.WriteLine("Valor de PI: " + Pi);
+    }
+
+    static double Circunferencia(double r) { 
+        return 2 * r * Pi;
+    }
+
+    static double Volume(double r)
+    {
+        return 4 / 3 * Pi * Math.Pow( r , 3);
+    }
+
 }
- 
+    
