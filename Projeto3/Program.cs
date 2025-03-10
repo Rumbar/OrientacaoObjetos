@@ -4,15 +4,16 @@ using System.Globalization;
 using Projeto3;
 class Program
 {
-    static void Main(string[]args)
+    static void Main(string[] args)
     {
         //ProblemaSemPoo();
         //Exercicio1();
         //GerenciamentoEstoque();
         //Exercicio2();
-        Raio();
-        
-        
+        //Raio();
+        Exercicio3();
+
+
     }
     static void ProblemaSemPoo()
     {
@@ -22,24 +23,24 @@ class Program
         y = new Triangulo();
 
         Console.WriteLine("ENTRE COM AS MEDIDAS DO TRIANGULO X");
-        x.A= double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
-        x.B= double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
-        x.C= double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
+        x.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        x.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        x.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
         Console.WriteLine("ENTRE COM AS MEDIDAS DO TRIANGULO Y");
-        y.A= double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
-        y.B= double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
-        y.C= double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
-        
-        double t1 = (x.A + x.B + x.C) / 2;
-        double t2 = (y.A+ y.B + y.C ) / 2;
+        y.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+        y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-        double r1 = Math.Sqrt(t1 * (t1-x.A)*(t1- x.B) *(t1- x.C));
-        double r2 = Math.Sqrt(t2 * (t2- y.A) *(t2- y.B) *(t2- y.C));
+        double t1 = (x.A + x.B + x.C) / 2;
+        double t2 = (y.A + y.B + y.C) / 2;
+
+        double r1 = Math.Sqrt(t1 * (t1 - x.A) * (t1 - x.B) * (t1 - x.C));
+        double r2 = Math.Sqrt(t2 * (t2 - y.A) * (t2 - y.B) * (t2 - y.C));
 
         Console.WriteLine("X = " + r1.ToString("F4", CultureInfo.InvariantCulture));
         Console.WriteLine("Y = " + r2.ToString("F4", CultureInfo.InvariantCulture));
 
-        if ( r1 > r2 )
+        if (r1 > r2)
             Console.WriteLine("Maior área: X ");
         else Console.WriteLine("Maior área: Y");
     }
@@ -100,31 +101,35 @@ class Program
         triangulo.altura = double.Parse(Console.ReadLine());
 
         Console.WriteLine(triangulo);
-        
+
     }
     static double Pi = 3.14;
 
     static void Raio()
     {
+        
         Console.WriteLine("Entre com o valor do Raio");
         double raio = double.Parse(Console.ReadLine());
 
-        double circ = Circunferencia(raio);
-        double vol = Volume(raio);
+        double circ = Calculadora.Circunferencia(raio);
+        double vol = Calculadora.Volume(raio);
 
         Console.WriteLine("Circuferencia: " + circ);
         Console.WriteLine("Volume: " + vol);
-        Console.WriteLine("Valor de PI: " + Pi);
+        Console.WriteLine("Valor de PI: " + Calculadora.Pi);
     }
 
-    static double Circunferencia(double r) { 
-        return 2 * r * Pi;
-    }
-
-    static double Volume(double r)
+    static void Exercicio3()
     {
-        return 4 / 3 * Pi * Math.Pow( r , 3);
-    }
+        Console.Write("Qual a atual cotação do dolar ? ");
+        double cotação = double.Parse(Console.ReadLine());
 
+        Console.Write("Quantos dólares você vai comprar? ");
+        double quantid = double.Parse(Console.ReadLine());
+
+        double valor = ConversorDeMoeda.Conversor(quantid, cotação);
+
+        Console.WriteLine("Valor a ser pago em reais: " + valor);
+
+    }   
 }
-    
