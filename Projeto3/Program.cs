@@ -11,7 +11,8 @@ class Program
         //GerenciamentoEstoque();
         //Exercicio2();
         //Raio();
-        Exercicio3();
+        //Exercicio3();
+        Exercicio4();
 
 
     }
@@ -63,34 +64,11 @@ class Program
     }
     static void GerenciamentoEstoque()
     {
-        Produto produto = new Produto();
-
-        Console.WriteLine("Entre com os dados do produto");
-        Console.Write("Nome: ");
-        produto.Nome = Console.ReadLine();
-        Console.Write("Preço: ");
-        produto.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-        Console.Write("Estoque: ");
-        produto.Quant = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Dados do Produto: " + produto);
-
-        Console.WriteLine();
-
-        Console.WriteLine("Digite o número de produtos a ser adicionados ao estoque: ");
-        int atualizacao = int.Parse(Console.ReadLine());
-        produto.AdicionarProdutos(atualizacao);
-        Console.WriteLine("Dados Atualizados: " + produto);
-
-        Console.WriteLine();
-
-        Console.WriteLine("Digite o número de produtos a ser removido do estoque");
-        int remocao = int.Parse(Console.ReadLine());
-        produto.RemoverProduto(remocao);
-
-        Console.WriteLine();
-
-        Console.WriteLine("Dados do Produto: " + produto);
+        Produto p = new Produto();
+        p.Nome = "T";
+        Console.WriteLine(p.Nome);
+        Console.WriteLine(p.Preco);
+        Console.WriteLine(p.Quant);
     }
     static void Exercicio2()
     {
@@ -131,5 +109,66 @@ class Program
 
         Console.WriteLine("Valor a ser pago em reais: " + valor);
 
-    }   
+    }
+    static void Exercicio4()
+    {
+
+        Banco b;
+
+        Console.Write("Entre com o número da conta:");
+        int conta = int.Parse(Console.ReadLine());
+     
+
+        Console.WriteLine();
+
+        Console.Write("Entre com o nome do titular da conta:");
+        string titular = Console.ReadLine();
+       
+
+        Console.WriteLine();
+
+        Console.Write("Haverá deposito inicial (S/N) ? ");
+        char escolha = char.Parse(Console.ReadLine());
+
+        Console.WriteLine();
+        
+
+        if (escolha == 's' || escolha == 'S')
+        {
+            Console.Write("Digite o valor do deposito inicial: ");
+            double depositoInicial = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            b = new Banco(conta,titular,depositoInicial);
+        }
+        
+        else 
+        {
+           b = new Banco(conta,titular);
+        }
+
+        Console.WriteLine("Dados da Conta: " + b);
+
+        Console.WriteLine();
+
+        Console.Write("Entre com um valor para deposito: ");
+        double quantia = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+        b.Deposito(quantia);
+
+        Console.WriteLine();
+
+        Console.Write("Dados da conta atualizados: " + b);
+
+        Console.WriteLine();
+
+        Console.Write("Entre com o valor para saque: " );
+        quantia = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+        b.Saque(quantia);
+
+        Console.WriteLine();
+
+        Console.Write("Dados da conta atualizados: " + b);
+
+    }
+
 }
