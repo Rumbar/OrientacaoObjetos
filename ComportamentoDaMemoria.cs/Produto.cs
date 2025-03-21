@@ -13,4 +13,6 @@ namespace ComportamentoDaMemoria
         public double Price { get; set; }  
 
     }
+
+    
 }
