@@ -11,7 +11,9 @@ class Program
         //Nullable();
         //Vetores();
         //Vetores2();
-        ExercicioDeFixacao1();
+        //ExercicioDeFixacao1();
+        //Modificadores();
+        Foreach();
 
         static void TipoRefTipoVal()
         {
@@ -121,7 +123,34 @@ class Program
                 }
 
             }
-            
+           
         }
+        static void Modificadores()
+        {
+            int a = 10;
+            //ao usar o ref eu referencio o x na minha classe com o A 
+            Calculadora.Triplicador(ref a);
+            Console.WriteLine(a);
+
+
+            //o out me permite referenciar a variavel sem inicia-lá 
+            int b = 10;
+            int triple;
+            Calculadora.Triple(b, out triple);
+            Console.WriteLine(triple);
+
+        }
+        static void Foreach()
+        {
+            string[]vect = new string[] { "Maria", "João", "Luiz" };
+
+            foreach (string obj in vect) 
+            {
+                Console.WriteLine(obj);
+            }
+        }
+
+
+
     }
 }
