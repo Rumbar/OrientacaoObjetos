@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Globalization;
 using System.Numerics;
 using ComportamentoDaMemoria;
+using System.Collections.Generic;
 class Program
 {
     static void Main(string[] args)
@@ -13,7 +14,9 @@ class Program
         //Vetores2();
         //ExercicioDeFixacao1();
         //Modificadores();
-        Foreach();
+        //Foreach();
+        //Lista();
+        ExercicioDeFixacao2();
 
         static void TipoRefTipoVal()
         {
@@ -113,17 +116,17 @@ class Program
             }
 
             Console.WriteLine("Busy rooms: ");
-            for (int i = 1; i !=10  ; i++)
+            for (int i = 1; i != 10; i++)
             {
                 if (vect[i] != null)
                 {
-                    
+
                     Console.Write(vect[i].ToString());
                     Console.WriteLine();
                 }
 
             }
-           
+
         }
         static void Modificadores()
         {
@@ -142,15 +145,92 @@ class Program
         }
         static void Foreach()
         {
-            string[]vect = new string[] { "Maria", "João", "Luiz" };
+            string[] vect = new string[] { "Maria", "João", "Luiz" };
 
-            foreach (string obj in vect) 
+            foreach (string obj in vect)
             {
                 Console.WriteLine(obj);
             }
         }
 
+        static void Lista()
+        {
+            List<string> list = new List<string>();
+
+            list.Add("Maria");
+            list.Add("Alex");
+            list.Add("Bob");
+            list.Add("Anna");
+            list.Insert(2, "Marco");
+            
+
+            foreach (string obj in list)
+            {  Console.WriteLine(obj); }
+            Console.WriteLine("List count: " + list.Count);
+
+            //acha a primeira ocorrencia
+            string s1 = list.Find(x => x[0] == 'A');
+            Console.WriteLine("First A: " + s1);
 
 
+            string s2 = list.FindLast(x => x[0] == 'A');
+            Console.WriteLine("Last A: " + s2);
+
+            //acha o index
+            int pos1 = list.FindIndex(x => x[0] == 'A');
+            Console.WriteLine("First position 'A': " + pos1);
+
+            //filta a lista baseado em um predicado 
+            int pos2 = list.FindLastIndex(x => x[0] == 'A');
+            Console.WriteLine("Last position 'A': " + pos2);
+            
+            //foreach para todo o obj na list2 imprima o obj
+            List<string> list2 = list.FindAll(x=> x.Length == 5);
+            Console.WriteLine("-------------");
+            foreach(string obj in list2) Console.WriteLine(obj);
+
+
+            //espera um dado
+            list.Remove("Alex");
+            //remove do indice
+            list.RemoveAt(3);
+            Console.WriteLine("-------------");
+            foreach (string obj in list) Console.WriteLine(obj);
+
+            Console.WriteLine("-------------");
+            //espera um predicado
+            list.RemoveAll(x=> x[0] == 'M');
+            foreach (string obj in list) Console.WriteLine(obj);
+
+            Console.WriteLine("-------------");
+            foreach (string obj in list) Console.WriteLine(obj);
+
+            //remova 2 a partir do segundo indice 
+            list.RemoveRange(2, 2);
+            Console.WriteLine("-------------");
+            foreach (string obj in list) Console.WriteLine(obj);
+        }
+
+        static void ExercicioDeFixacao2() 
+        {
+            List<Employeers> list = new List<Employeers>();
+            Console.WriteLine("How many employeers will be registered");
+            int num1 = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i == num1; i++) 
+            {
+                Console.WriteLine("Employeer#"+ i);
+                Console.WriteLine("Id:" );
+                int id = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Name:");
+                string name =(Console.ReadLine());
+
+                Console.WriteLine("Salary:");
+                double salary = double.Parse(Console.ReadLine());
+
+                list.Add(new Employeers(name,id, salary));
+            }
+        }
     }
 }
