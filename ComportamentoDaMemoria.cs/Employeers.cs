@@ -19,9 +19,17 @@ namespace ComportamentoDaMemoria
             Id = id;
             Name = name;
             Salary = salary;
-            
+
+        }
+        public void IncreaseSalary(double percentage)
+        {
+            Salary += Salary * percentage / 100.00;
         }
 
-
+        public override string ToString()
+        {
+            return 
+                Id + ", " + Name + ", " + Salary;
+        }
     }
 }

@@ -16,7 +16,11 @@ class Program
         //Modificadores();
         //Foreach();
         //Lista();
-        ExercicioDeFixacao2();
+        //ExercicioDeFixacao2();
+        //Matrizes();
+        //ExemploMatrizes();
+        //ExercicioMatrizes();
+        exemploprof();
 
         static void TipoRefTipoVal()
         {
@@ -162,10 +166,10 @@ class Program
             list.Add("Bob");
             list.Add("Anna");
             list.Insert(2, "Marco");
-            
+
 
             foreach (string obj in list)
-            {  Console.WriteLine(obj); }
+            { Console.WriteLine(obj); }
             Console.WriteLine("List count: " + list.Count);
 
             //acha a primeira ocorrencia
@@ -183,11 +187,11 @@ class Program
             //filta a lista baseado em um predicado 
             int pos2 = list.FindLastIndex(x => x[0] == 'A');
             Console.WriteLine("Last position 'A': " + pos2);
-            
+
             //foreach para todo o obj na list2 imprima o obj
-            List<string> list2 = list.FindAll(x=> x.Length == 5);
+            List<string> list2 = list.FindAll(x => x.Length == 5);
             Console.WriteLine("-------------");
-            foreach(string obj in list2) Console.WriteLine(obj);
+            foreach (string obj in list2) Console.WriteLine(obj);
 
 
             //espera um dado
@@ -199,7 +203,7 @@ class Program
 
             Console.WriteLine("-------------");
             //espera um predicado
-            list.RemoveAll(x=> x[0] == 'M');
+            list.RemoveAll(x => x[0] == 'M');
             foreach (string obj in list) Console.WriteLine(obj);
 
             Console.WriteLine("-------------");
@@ -211,26 +215,186 @@ class Program
             foreach (string obj in list) Console.WriteLine(obj);
         }
 
-        static void ExercicioDeFixacao2() 
+        static void ExercicioDeFixacao2()
         {
             List<Employeers> list = new List<Employeers>();
-            Console.WriteLine("How many employeers will be registered");
+            Console.Write("How many employeers will be registered: ");
             int num1 = int.Parse(Console.ReadLine());
 
-            for (int i = 1; i == num1; i++) 
+            for (int i = 1; i <= num1; i++)
             {
-                Console.WriteLine("Employeer#"+ i);
-                Console.WriteLine("Id:" );
+                Console.WriteLine("Employeer#" + i);
+                Console.Write("Id:");
                 int id = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Name:");
-                string name =(Console.ReadLine());
+                Console.Write("Name:");
+                string name = (Console.ReadLine());
 
-                Console.WriteLine("Salary:");
+                Console.Write("Salary:");
                 double salary = double.Parse(Console.ReadLine());
 
-                list.Add(new Employeers(name,id, salary));
+                list.Add(new Employeers(id, name, salary));
+            }
+
+            Console.Write("Enter the employeer id that will have salary increase:");
+            int searchId = int.Parse(Console.ReadLine());
+
+
+            Employeers emp = list.Find(x => x.Id == searchId);
+            if (emp == null)
+                Console.WriteLine("This Id does not exist!");
+            else
+            {
+                Console.Write("Enter the percentage to be increased: ");
+                int percentage = int.Parse(Console.ReadLine());
+                emp.IncreaseSalary(percentage);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Updated list of employees: ");
+            foreach (Employeers obj in list)
+                Console.WriteLine(obj);
+        }
+
+        static void Matrizes()
+        {
+            double[,] matrix = new double[2, 3];
+            Console.WriteLine(matrix.Length);
+            Console.WriteLine(matrix.Rank);
+            Console.WriteLine(matrix.GetLength(0));
+            Console.WriteLine(matrix.GetLength(1));
+        }
+        static void ExemploMatrizes()
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            int[,] matriz = new int[n, n];
+            //for para percorrer as linhas 
+            for (int i = 0; i < n; i++)
+            {
+                //lendo a linha e recortando os pedaços dela baseado no split no espaço
+                string[] values = Console.ReadLine().Split(' ');
+                //for para percorrer as colunas
+                for (int j = 0; j < n; j++)
+                {
+                    matriz[i, j] = int.Parse(values[j]);
+                }
+
+            }
+            Console.Write("Main diagonal: ");
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write(matriz[i, i] + " ");
+            }
+            Console.WriteLine();
+
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (matriz[i, j] < 0) { count++; }
+                }
+            }
+            Console.WriteLine("Numeros negativos:" + count);
+        }
+
+        static void ExercicioMatrizes()
+        {
+            string[] line = Console.ReadLine().Split(' ');
+
+            int n = int.Parse(line[0]);
+            int m = int.Parse(line[1]);
+
+            int[,] matriz = new int[n, m];
+            for (int i = 0; i < n; i++)
+            {
+                string[] values = Console.ReadLine().Split(' ');
+                for (int j = 0; j < n; j++)
+                {
+                    matriz[i, j] = int.Parse(values[j]);
+                }
+            }
+
+            int num = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matriz[i, j] == num)
+                    {
+                        Console.WriteLine("Position " + i + "," + j);
+
+                        if (j > 0)
+                        {
+                            Console.WriteLine("Left: " + matriz[i, j - 1]);
+                        }
+
+                        if (j < n - 1)
+                        {
+                            Console.WriteLine("Right: " + matriz[i, j + 1]);
+                        }
+
+                        if (i > 0)
+                        {
+                            Console.WriteLine("Up: " + matriz[i - 1, j]);
+                        }
+                        if (i < m - 1)
+                        {
+                            Console.WriteLine("Down: " + matriz[i + 1, j]);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        static void exemploprof()
+        {
+            string[] line = Console.ReadLine().Split(' ');
+            int m = int.Parse(line[0]);
+            int n = int.Parse(line[1]);
+
+            int[,] mat = new int[m, n];
+
+            for (int i = 0; i < m; i++)
+            {
+                string[] values = Console.ReadLine().Split(' ');
+                for (int j = 0; j < n; j++)
+                {
+                    mat[i, j] = int.Parse(values[j]);
+                }
+            }
+
+            int x = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (mat[i, j] == x)
+                    {
+                        Console.WriteLine("Position " + i + "," + j + ":");
+                        if (j > 0)
+                        {
+                            Console.WriteLine("Left: " + mat[i, j - 1]);
+                        }
+                        if (i > 0)
+                        {
+                            Console.WriteLine("Up: " + mat[i - 1, j]);
+                        }
+                        if (j < n - 1)
+                        {
+                            Console.WriteLine("Right: " + mat[i, j + 1]);
+                        }
+                        if (i < m - 1)
+                        {
+                            Console.WriteLine("Down: " + mat[i + 1, j]);
+                        }
+                    }
+                }
             }
         }
     }
 }
+       
