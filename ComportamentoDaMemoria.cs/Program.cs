@@ -20,7 +20,7 @@ class Program
         //Matrizes();
         //ExemploMatrizes();
         //ExercicioMatrizes();
-        exemploprof();
+        //exemploprof();
 
         static void TipoRefTipoVal()
         {
