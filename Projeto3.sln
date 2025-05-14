@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComportamentoDaMemoria", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicosEspeciaisEmC#", "TopicosEspeciaisEmC#\TopicosEspeciaisEmC#.csproj", "{8F3EA18B-BD94-4E33-A57F-FC124AC99F54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumeracaoeComposicao", "EnumeracaoeComposicao\EnumeracaoeComposicao.csproj", "{76C90A0F-8E5C-4C4F-8101-A6FBA8B6A6D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8F3EA18B-BD94-4E33-A57F-FC124AC99F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F3EA18B-BD94-4E33-A57F-FC124AC99F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F3EA18B-BD94-4E33-A57F-FC124AC99F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76C90A0F-8E5C-4C4F-8101-A6FBA8B6A6D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76C90A0F-8E5C-4C4F-8101-A6FBA8B6A6D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76C90A0F-8E5C-4C4F-8101-A6FBA8B6A6D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76C90A0F-8E5C-4C4F-8101-A6FBA8B6A6D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
